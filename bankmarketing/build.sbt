@@ -1,11 +1,11 @@
 import Dependencies._
 
-ThisBuild / scalaVersion     := "2.12.13"
+ThisBuild / scalaVersion     := "2.13.12"
 ThisBuild / version          := "0.1.0-SNAPSHOT"
 ThisBuild / organization     := "com.example"
 ThisBuild / organizationName := "example"
 
-val sparkVersion = "3.1.2"
+val sparkVersion = "3.5.1"
 
 lazy val root = (project in file("."))
   .settings(
@@ -13,10 +13,9 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(
       munit % Test,
       "org.apache.spark" %% "spark-core" % sparkVersion,
-      "org.apache.spark" %% "spark-sql" % sparkVersion,
-      "org.apache.spark" %% "spark-mllib" % sparkVersion,  
+      "org.apache.spark" %% "spark-sql " % sparkVersion,
+      "org.apache.spark" %% "spark-mllib" % sparkVersion,
     )
-
   )
 
 // See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.
