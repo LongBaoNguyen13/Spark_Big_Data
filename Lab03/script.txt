@@ -1,0 +1,53 @@
+val df = spark.read.parquet("sa.parquet")
+
+df.printSchema
+
+df.show
+df.select("tweet").show(5, false)
+
+df.count
+
+import org.apache.spark.ml.feature._
+
+val tokenizer = new Tokenizer().setInputCol("tweet").setOutputCol("tokens")
+
+vectorizerModel.vocabulary.takeRight(30)
+
+val ff = vectorizerModel.transform(ef)
+
+ff.printSchema
+
+ff.select("x").show
+
+ff.select("x").head
+
+ff.select("tweet").head
+
+vectorizerModel.vocabulary(1252)
+
+
+import org.apache.spark.ml.classification._
+
+val logreg = new LogisticRegression().setFeaturesCol("x").setLabelCol("sentiment")
+
+val model = logreg.fit(ff)
+
+val gf = model.transform(ff)
+
+gf.printSchema
+
+gf.select("sentiment", "prediction").show
+
+gf.groupBy("sentiment").count.show
+
+import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator
+
+val evaluator = new MulticlassClassificationEvaluator()
+
+val evaluator = new MulticlassClassificationEvaluator
+
+evaluator.evaluate(gf)
+
+evaluator.set
+
+evaluator.setLabelCol
